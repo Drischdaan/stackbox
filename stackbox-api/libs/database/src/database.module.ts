@@ -21,6 +21,8 @@ import databaseConfig, { IDatabaseConfig } from './database.config';
           database: databaseConfig.database,
           autoLoadEntities: true,
           synchronize: true,
+          retryDelay: 30000,
+          migrationsRun: databaseConfig.runMigrations,
         };
       },
     }),

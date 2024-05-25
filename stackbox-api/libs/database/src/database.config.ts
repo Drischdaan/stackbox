@@ -4,6 +4,7 @@ export interface IDatabaseConfig {
   username: string;
   password: string;
   database: string;
+  runMigrations: boolean;
 }
 
 type DatabaseConfigContainer = {
@@ -17,5 +18,6 @@ export default (): DatabaseConfigContainer => ({
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_NAME,
+    runMigrations: process.env.DATABASE_RUN_MIGRATIONS === 'true',
   },
 });

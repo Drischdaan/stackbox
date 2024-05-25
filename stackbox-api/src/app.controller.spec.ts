@@ -24,9 +24,9 @@ describe('AppController', () => {
     it('should return health check result', async () => {
       const expected: HealthCheckResult = {
         status: 'ok',
-        details: {},
-        info: {},
+        info: { database: { status: 'up' } },
         error: {},
+        details: { database: { status: 'up' } },
       };
       healthService.check.mockResolvedValueOnce(expected);
 
