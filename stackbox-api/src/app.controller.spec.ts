@@ -1,21 +1,37 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { TestBed } from '@automock/jest';
+import { HealthCheckResult, HealthCheckService } from '@nestjs/terminus';
 import { AppController, PingResponse } from './app.controller';
 
 describe('AppController', () => {
   let appController: AppController;
+  let healthService: jest.Mocked<HealthCheckService>;
 
   beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
-    }).compile();
+    const { unit, unitRef } = TestBed.create(AppController).compile();
 
-    appController = app.get<AppController>(AppController);
+    appController = unit;
+    healthService = unitRef.get<HealthCheckService>(HealthCheckService);
   });
 
   describe('root', () => {
     it('should return ping response', () => {
       const expected: PingResponse = { ping: 'pong' };
       expect(appController.getPing()).toEqual(expected);
+    });
+  });
+
+  describe('health', () => {
+    it('should return health check result', async () => {
+      const expected: HealthCheckResult = {
+        status: 'ok',
+        details: {},
+        info: {},
+        error: {},
+      };
+      healthService.check.mockResolvedValueOnce(expected);
+
+      const result = await appController.getHealthCheck();
+      expect(result).toEqual(expected);
     });
   });
 });

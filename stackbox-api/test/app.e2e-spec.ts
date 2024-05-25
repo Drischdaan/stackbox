@@ -1,4 +1,5 @@
 import { INestApplication } from '@nestjs/common';
+import { HealthCheckResult } from '@nestjs/terminus';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
 import { PingResponse } from '../src/app.controller';
@@ -19,5 +20,18 @@ describe('AppController (e2e)', () => {
   it('/ (GET)', () => {
     const expected: PingResponse = { ping: 'pong' };
     return request(app.getHttpServer()).get('/').expect(200).expect(expected);
+  });
+
+  it('/health (GET)', () => {
+    const expected: HealthCheckResult = {
+      status: 'ok',
+      details: {},
+      info: {},
+      error: {},
+    };
+    return request(app.getHttpServer())
+      .get('/health')
+      .expect(200)
+      .expect(expected);
   });
 });
