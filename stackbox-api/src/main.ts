@@ -1,4 +1,4 @@
-import { Logger, ValidationPipe } from '@nestjs/common';
+import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { IAppConfig } from '@stackbox/common';
@@ -15,6 +15,12 @@ async function bootstrap() {
   logger.log(
     `Allowed origins: ${appConfig.allowedOrigins.length > 0 ? appConfig.allowedOrigins.join(', ') : 'None'}`,
   );
+
+  app.enableVersioning({
+    type: VersioningType.URI,
+    prefix: 'v',
+    defaultVersion: '1',
+  });
 
   app.use(helmet());
 
