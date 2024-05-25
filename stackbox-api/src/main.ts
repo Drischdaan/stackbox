@@ -1,7 +1,7 @@
 import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
-import { IAppConfig } from '@stackbox/common';
+import { IAppConfig, useSwagger } from '@stackbox/common';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
 
@@ -25,6 +25,8 @@ async function bootstrap() {
   app.use(helmet());
 
   app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
+
+  if (appConfig.enableSwagger) useSwagger(app);
 
   await app.listen(appConfig.port);
   logger.log(`🚀 Application is running listening on port ${appConfig.port}`);

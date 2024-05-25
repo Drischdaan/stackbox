@@ -1,6 +1,7 @@
 export interface IAppConfig {
   port: number;
   allowedOrigins: string[];
+  enableSwagger: boolean;
 }
 
 type AppConfigContainer = {
@@ -13,5 +14,6 @@ export default (): AppConfigContainer => ({
     allowedOrigins: process.env.ALLOWED_ORIGINS
       ? process.env.ALLOWED_ORIGINS.split(',')
       : [],
+    enableSwagger: process.env.ENABLE_SWAGGER === 'true',
   },
 });
