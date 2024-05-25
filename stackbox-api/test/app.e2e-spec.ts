@@ -17,6 +17,10 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
+  afterEach(async () => {
+    await app.close();
+  });
+
   it('/ (GET)', () => {
     const expected: PingResponse = { ping: 'pong' };
     return request(app.getHttpServer()).get('/').expect(200).expect(expected);

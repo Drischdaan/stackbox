@@ -2,10 +2,11 @@ import { ClassSerializerInterceptor, Module } from '@nestjs/common';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TerminusModule } from '@nestjs/terminus';
 import { CommonModule } from '../libs/common/src';
+import { DatabaseModule } from '../libs/database/src';
 import { AppController } from './app.controller';
 
 @Module({
-  imports: [CommonModule, TerminusModule],
+  imports: [CommonModule, TerminusModule, DatabaseModule],
   controllers: [AppController],
   providers: [
     {

@@ -3,6 +3,7 @@ import {
   HealthCheck,
   HealthCheckResult,
   HealthCheckService,
+  TypeOrmHealthIndicator,
 } from '@nestjs/terminus';
 
 export class PingResponse {
@@ -11,7 +12,10 @@ export class PingResponse {
 
 @Controller()
 export class AppController {
-  constructor(private readonly healthService: HealthCheckService) {}
+  constructor(
+    private readonly healthService: HealthCheckService,
+    private readonly databaseHealthIndicator: TypeOrmHealthIndicator,
+  ) {}
 
   @Get()
   getPing(): PingResponse {
@@ -21,6 +25,8 @@ export class AppController {
   @Get('health')
   @HealthCheck()
   async getHealthCheck(): Promise<HealthCheckResult> {
-    return await this.healthService.check([]);
+    return await this.healthService.check([
+      () => this.databaseHealthIndicator.pingCheck('database'),
+    ]);
   }
 }
