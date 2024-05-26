@@ -72,7 +72,7 @@
       "flat": true,
       "projectNameAndRootFormat": "derived",
       "simpleName": true,
-      "tags": "shared"
+      "tags": "scope:shared"
     }
   },
   "defaultProject": "stackbox"

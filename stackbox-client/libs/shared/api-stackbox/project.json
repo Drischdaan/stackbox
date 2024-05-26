@@ -4,7 +4,7 @@
   "sourceRoot": "libs/shared/api-stackbox/src",
   "prefix": "stackbox",
   "projectType": "library",
-  "tags": ["shared"],
+  "tags": ["scope:shared"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
