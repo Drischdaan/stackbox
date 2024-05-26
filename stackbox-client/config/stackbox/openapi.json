@@ -402,6 +402,17 @@
       "Product": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
           "name": {
             "type": "string"
           },
@@ -409,7 +420,7 @@
             "type": "string"
           }
         },
-        "required": ["name", "description"]
+        "required": ["id", "createdAt", "updatedAt", "name", "description"]
       },
       "ProductCreateDto": {
         "type": "object",

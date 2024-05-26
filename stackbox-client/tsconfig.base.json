@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@stackbox/shared/data-access-products": [
+        "libs/shared/data-access-products/src/index.ts"
+      ],
       "@stackbox/shared/api-stackbox": ["libs/shared/api-stackbox/src/index.ts"]
     }
   },
