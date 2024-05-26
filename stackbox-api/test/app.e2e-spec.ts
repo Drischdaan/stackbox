@@ -37,9 +37,9 @@ describe('AppController (e2e)', () => {
   it('/health (GET)', () => {
     const expected: HealthCheckResult = {
       status: 'ok',
-      info: { database: { status: 'up' } },
+      info: { database: { status: 'up' }, auth0: { status: 'up' } },
       error: {},
-      details: { database: { status: 'up' } },
+      details: { database: { status: 'up' }, auth0: { status: 'up' } },
     };
     return request(app.getHttpServer())
       .get('/health')

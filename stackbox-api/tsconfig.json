@@ -35,6 +35,12 @@
       ],
       "@stackbox/products/*": [
         "libs/products/src/*"
+      ],
+      "@stackbox/auth": [
+        "libs/auth/src"
+      ],
+      "@stackbox/auth/*": [
+        "libs/auth/src/*"
       ]
     }
   }
