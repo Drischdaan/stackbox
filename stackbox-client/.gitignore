@@ -42,3 +42,6 @@ Thumbs.db
 .angular
 
 *.env
+
+libs/shared/api-stackbox/src/lib/*
+!libs/shared/api-stackbox/src/lib/.gitkeep
