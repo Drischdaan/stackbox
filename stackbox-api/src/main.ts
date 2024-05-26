@@ -11,6 +11,8 @@ async function bootstrap() {
   const config: ConfigService = app.get<ConfigService>(ConfigService);
   const appConfig: IAppConfig = config.get<IAppConfig>('app');
 
+  app.enableShutdownHooks();
+
   app.enableCors({ origin: appConfig.allowedOrigins });
   logger.log(
     `Allowed origins: ${appConfig.allowedOrigins.length > 0 ? appConfig.allowedOrigins.join(', ') : 'None'}`,

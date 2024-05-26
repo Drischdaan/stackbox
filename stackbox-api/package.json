@@ -18,10 +18,11 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "migrations:generate": "typeorm migration:generate -- -d ./libs/database/src/dataSource.ts",
-    "migrations:run": "typeorm migration:run -- -d ./libs/database/src/dataSource.ts",
-    "migrations:revert": "typeorm migration:revert -- -d ./libs/database/src/dataSource.ts",
-    "migrations:create": "typeorm migration:create --"
+    "typeorm": "ts-node ./node_modules/typeorm/cli",
+    "migrations:generate": "pnpm typeorm migration:generate -d ./libs/database/src/dataSource.ts",
+    "migrations:run": "pnpm typeorm migration:run -d ./libs/database/src/dataSource.ts",
+    "migrations:revert": "pnpm typeorm migration:revert -d ./libs/database/src/dataSource.ts",
+    "migrations:create": "pnpm typeorm migration:create"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -94,7 +95,8 @@
     ],
     "moduleNameMapper": {
       "^@stackbox/common(|/.*)$": "<rootDir>/libs/common/src/$1",
-      "^@stackbox/database(|/.*)$": "<rootDir>/libs/database/src/$1"
+      "^@stackbox/database(|/.*)$": "<rootDir>/libs/database/src/$1",
+      "^@stackbox/products(|/.*)$": "<rootDir>/libs/products/src/$1"
     }
   }
 }

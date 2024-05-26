@@ -59,16 +59,16 @@ $ pnpm run test:cov
 
 ```bash
 # generate migration
-$ pnpm migration:generate ./libs/database/src/migrations/<migration-name>
+$ pnpm migrations:generate ./libs/database/src/migrations/<migration-name>
 
 # run migration
-$ pnpm migration:run
+$ pnpm migrations:run
 
 # revert migration
-$ pnpm migration:revert
+$ pnpm migrations:revert
 
 # create migration
-$ pnpm migration:create ./libs/database/src/migrations/<migration-name>
+$ pnpm migrations:create ./libs/database/src/migrations/<migration-name>
 ```
 
 ## Support

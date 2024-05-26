@@ -1,5 +1,9 @@
 {
-  "moduleFileExtensions": ["js", "json", "ts"],
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "ts"
+  ],
   "rootDir": ".",
   "testEnvironment": "node",
   "testRegex": ".e2e-spec.ts$",
@@ -10,7 +14,11 @@
     "@stackbox/common/(.*)": "<rootDir>/../libs/common/src/$1",
     "@stackbox/common": "<rootDir>/../libs/common/src",
     "@stackbox/database/(.*)": "<rootDir>/../libs/database/src/$1",
-    "@stackbox/database": "<rootDir>/../libs/database/src"
+    "@stackbox/database": "<rootDir>/../libs/database/src",
+    "@stackbox/products/(.*)": "<rootDir>/../libs/products/src/$1",
+    "@stackbox/products": "<rootDir>/../libs/products/src"
   },
-  "setupFilesAfterEnv": ["./setup.e2e.ts"]
+  "setupFilesAfterEnv": [
+    "./setup.e2e.ts"
+  ]
 }

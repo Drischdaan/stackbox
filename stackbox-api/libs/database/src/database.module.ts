@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import path from 'path';
 import databaseConfig, { IDatabaseConfig } from './database.config';
 
 @Module({
@@ -21,10 +20,10 @@ import databaseConfig, { IDatabaseConfig } from './database.config';
           password: databaseConfig.password,
           database: databaseConfig.database,
           autoLoadEntities: true,
-          synchronize: true,
+          synchronize: false,
           retryDelay: 30000,
           migrationsRun: databaseConfig.runMigrations,
-          migrations: [path.join(__dirname, 'migrations', '*.{ts,js}')],
+          migrations: [__dirname + '/migrations/*.{ts,js}'],
         };
       },
     }),

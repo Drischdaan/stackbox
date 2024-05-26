@@ -1,5 +1,4 @@
 import 'dotenv/config';
-import path from 'path';
 import { DataSource } from 'typeorm';
 
 const dataSource: DataSource = new DataSource({
@@ -12,10 +11,10 @@ const dataSource: DataSource = new DataSource({
   logging: true,
   synchronize: false,
   entities: [
-    path.join(__dirname, '../..', '**', '*.entity.{ts,js}'),
-    path.join(__dirname, '../../..', 'src', '**', '*.entity.{ts,js}'),
+    __dirname + '/../../**/*.entity.{ts,js}',
+    __dirname + '/../../../src/**/*.entity.{ts,js}',
   ],
-  migrations: [path.join(__dirname, 'migrations', '*.{ts,js}')],
+  migrations: [__dirname + '/migrations/*.{ts,js}'],
 });
 
 export default dataSource;

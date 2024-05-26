@@ -36,15 +36,15 @@ export interface ICrudService<TEntity extends EntityBase> {
   getById(
     id: string,
     relations?: FindOptionsRelations<TEntity>,
-  ): Promise<TEntity>;
+  ): Promise<TEntity | null>;
   create<TCreateDto extends DeepPartial<TEntity>>(
     createDto: TCreateDto,
     options?: CrudCreateOptions,
-  ): Promise<TEntity>;
+  ): Promise<TEntity | null>;
   update<TUpdateDto extends DeepPartial<TEntity>>(
     id: string,
     updateDto: TUpdateDto,
-  ): Promise<TEntity>;
+  ): Promise<TEntity | null>;
   delete(id: string): Promise<boolean>;
 }
 
@@ -53,7 +53,7 @@ export abstract class CrudService<TEntity extends EntityBase>
 {
   constructor(
     private readonly repository: Repository<TEntity>,
-    private readonly entityManager: EntityManager,
+    protected readonly entityManager: EntityManager,
   ) {}
 
   abstract getUniqueConstraints(): Array<keyof TEntity>;
@@ -90,7 +90,7 @@ export abstract class CrudService<TEntity extends EntityBase>
   async getById(
     id: string,
     relations?: FindOptionsRelations<TEntity>,
-  ): Promise<TEntity> {
+  ): Promise<TEntity | null> {
     const findOptions: FindOptionsWhere<EntityBase> = { id };
     return await this.repository.findOne({
       where: findOptions as FindOptionsWhere<TEntity>,
@@ -101,7 +101,7 @@ export abstract class CrudService<TEntity extends EntityBase>
   async create<TCreateDto extends DeepPartial<TEntity>>(
     createDto: TCreateDto,
     options?: CrudCreateOptions,
-  ): Promise<TEntity> {
+  ): Promise<TEntity | null> {
     if (options === undefined) options = new CrudCreateOptions();
     const findOptions: FindOptionsWhere<TEntity> = {};
     this.getUniqueConstraints().forEach((key) => {
@@ -132,7 +132,7 @@ export abstract class CrudService<TEntity extends EntityBase>
   async update<TUpdateDto extends DeepPartial<TEntity>>(
     id: string,
     updateDto: TUpdateDto,
-  ): Promise<TEntity> {
+  ): Promise<TEntity | null> {
     const entity: TEntity = await this.getById(id);
     if (!entity) return null;
     return await this.repository.save({ ...entity, ...updateDto });
