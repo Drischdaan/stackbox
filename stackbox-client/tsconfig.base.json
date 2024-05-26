@@ -15,10 +15,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@stackbox/shared/utils-store": ["libs/shared/utils-store/src/index.ts"],
+      "@stackbox/shared/api-stackbox": [
+        "libs/shared/api-stackbox/src/index.ts"
+      ],
       "@stackbox/shared/data-access-products": [
         "libs/shared/data-access-products/src/index.ts"
-      ],
-      "@stackbox/shared/api-stackbox": ["libs/shared/api-stackbox/src/index.ts"]
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
