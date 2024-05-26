@@ -64,5 +64,6 @@
       "style": "scss",
       "unitTestRunner": "jest"
     }
-  }
+  },
+  "defaultProject": "stackbox"
 }
