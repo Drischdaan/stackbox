@@ -27,6 +27,10 @@ export function useSwagger(app: INestApplication) {
   const document: OpenAPIObject = SwaggerModule.createDocument(
     app,
     builder.build(),
+    {
+      operationIdFactory: (_controllerKey: string, methodKey: string) =>
+        methodKey,
+    },
   );
   SwaggerModule.setup('swagger', app, document);
   logger.log('📚 Swagger enabled');
