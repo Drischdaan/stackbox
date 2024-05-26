@@ -63,6 +63,7 @@ export abstract class CrudService<TEntity extends EntityBase>
     options?: PaginationOptions,
     relations?: FindOptionsRelations<TEntity>,
   ): Promise<TEntity[]> {
+    options = this.checkPaginationOptions(options);
     return await this.repository.find({
       ...this.applyPagination(options),
       relations,
