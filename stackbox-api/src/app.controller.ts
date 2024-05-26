@@ -8,6 +8,7 @@ import {
   HttpHealthIndicator,
   TypeOrmHealthIndicator,
 } from '@nestjs/terminus';
+import { PublicEndpoint } from '../libs/auth/src';
 
 export class PingResponse {
   @ApiProperty()
@@ -26,12 +27,14 @@ export class AppController {
 
   @Get()
   @ApiOkResponse({ type: PingResponse })
+  @PublicEndpoint()
   getPing(): PingResponse {
     return { ping: 'pong' };
   }
 
   @Get('health')
   @HealthCheck()
+  @PublicEndpoint()
   async getHealthCheck(): Promise<HealthCheckResult> {
     return await this.healthService.check([
       () => this.databaseHealthIndicator.pingCheck('database'),
