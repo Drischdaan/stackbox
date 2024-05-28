@@ -73,6 +73,9 @@
       "projectNameAndRootFormat": "derived",
       "simpleName": true,
       "tags": "scope:shared"
+    },
+    "@nx/angular:component": {
+      "style": "scss"
     }
   },
   "defaultProject": "stackbox"
