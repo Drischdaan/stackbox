@@ -21,8 +21,14 @@
       "@stackbox/shared/component-app-bar": [
         "libs/shared/component-app-bar/src/index.ts"
       ],
+      "@stackbox/shared/component-app-sidebar": [
+        "libs/shared/component-app-sidebar/src/index.ts"
+      ],
       "@stackbox/shared/data-access-products": [
         "libs/shared/data-access-products/src/index.ts"
+      ],
+      "@stackbox/shared/utils-router": [
+        "libs/shared/utils-router/src/index.ts"
       ],
       "@stackbox/shared/utils-store": ["libs/shared/utils-store/src/index.ts"]
     }

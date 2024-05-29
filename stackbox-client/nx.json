@@ -72,7 +72,8 @@
       "flat": true,
       "projectNameAndRootFormat": "derived",
       "simpleName": true,
-      "tags": "scope:shared"
+      "tags": "scope:shared",
+      "directory": "libs/shared"
     },
     "@nx/angular:component": {
       "style": "scss"

@@ -1,0 +1,18 @@
+<div class="border-r border-r-neutral-300 flex flex-col p-3 h-full text-sm">
+  <ul class="flex flex-col gap-3 flex-1">
+    @for (route of getRoutesByAlignment('top'); track $index) {
+    <stackbox-app-sidebar-item
+      [route]="route"
+      [isActive]="isActiveRoute(route)"
+    ></stackbox-app-sidebar-item>
+    }
+  </ul>
+  <ul class="flex flex-col gap-3 flex-initial">
+    @for (route of getRoutesByAlignment('bottom'); track $index) {
+    <stackbox-app-sidebar-item
+      [route]="route"
+      [isActive]="isActiveRoute(route)"
+    ></stackbox-app-sidebar-item>
+    }
+  </ul>
+</div>

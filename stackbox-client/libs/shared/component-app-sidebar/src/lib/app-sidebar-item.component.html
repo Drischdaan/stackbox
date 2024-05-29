@@ -1,0 +1,15 @@
+<li
+  [routerLink]="getRoutePath(route())"
+  class="p-2 flex justify-center items-center rounded-md cursor-pointer hover:bg-neutral-200 transition-colors duration-300 relative group"
+  [ngClass]="{
+    'text-neutral-500': !isActive(),
+    'text-neutral-800': isActive()
+  }"
+>
+  <ng-icon [name]="getRouteIcon(route())" size="20"></ng-icon>
+  <div
+    class="absolute translate-x-11 left-0 bg-white drop-shadow border border-neutral-300 px-3 py-1 rounded-md group-hover:block hidden"
+  >
+    {{ getRouteName(route()) }}
+  </div>
+</li>

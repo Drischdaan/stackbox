@@ -1,2 +1,11 @@
-@if(isAuthenticated() === true) { <stackbox-app-bar></stackbox-app-bar>
-<router-outlet></router-outlet> }
+@if(isAuthenticated() === true) {
+<div class="flex flex-col w-full h-screen">
+  <stackbox-app-bar class="flex-initial"></stackbox-app-bar>
+  <div class="flex-1 flex flex-row">
+    <stackbox-app-sidebar class="flex-initial"></stackbox-app-sidebar>
+    <div class="flex-1 p-5">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+}
